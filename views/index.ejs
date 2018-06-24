@@ -1,0 +1,32 @@
+<% include partials/header %>
+<%= title %>
+
+<% if (errors) { %>
+    <ul>
+        <% errors.forEach (function (error) { %>
+            <li>
+                <%= error.msg %>
+            </li>
+        <% }) %>
+    </ul>
+<% } %>
+<form method="POST" action="/users/add">
+    First Name : <br/>
+    <input type="text" name="firstName"/><br/>
+    Last Name : <br/>
+    <input type="text" name="lastName"/><br/>
+    Email : <br/>
+    <input type="email" name="email"/><br/>
+    <input type="submit" value="Submit"/>
+</form>
+<br/>
+<ul>
+    <% users.forEach (function (user) { %>
+        <li>
+            <%= user.firstName %>
+            <%= user.lastName %>
+            <a href="#" class="deleteUser" data-id="<%= user._id %>">Delete</a>
+        </li>
+    <% }) %>
+</ul>
+<% include partials/footer %>
